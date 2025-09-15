@@ -1,215 +1,310 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+/* Reset / base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+:root {
+  --header-h: 64px;
+  --purple-accent: #c9a0dc;
+  --glass-bg: rgba(255,255,255,0.08);
+  --ink: #ffffff;
 }
 
+/* Smooth scrolling to anchors */
+html { scroll-behavior: smooth; }
+
+/* Background */
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url("purpleGalaxy.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: var(--header-h);            /* make room for fixed header */
+  background: #0b0620 url("purpleGalaxy.jpg") center / cover fixed no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  color: var(--ink);
 }
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 99;
+/* Header */
+.site-header{
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  z-index: 1000;
+  background: rgba(10,0,35,.55);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-.logo{
-    font-size: 2em;
-    color: white;
-    user-select: none;
-}
+/* Logo */
+.logo { font-size: 1.6rem; font-weight: 700; }
+.logo a { color: #fff; text-decoration: none; }
 
+/* Desktop nav */
+.navigation{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 .navigation a{
-    position: relative;
-    font-size: 1.1em;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 40px;
+  position: relative;
+  font-size: 1.05rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
 }
-
 .navigation a::after{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    background: white;
-    border-radius: 5px;
-    transform-origin: right;
-    transform: scaleX(0);
-    transition: transform .5s;
+  content: "";
+  position: absolute; left: 0; bottom: -6px;
+  width: 100%; height: 3px;
+  background: #fff; border-radius: 5px;
+  transform-origin: right; transform: scaleX(0);
+  transition: transform .35s;
 }
-.navigation a:hover::after{
-    transform-origin: left;
-    transform: scaleX(1);
+.navigation a:hover::after{ transform-origin: left; transform: scaleX(1); }
+
+.btnLogin-popup{
+  width: 120px; height: 44px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  font-size: 1rem; font-weight: 600; color: #fff;
+  cursor: pointer;
+  transition: .25s;
+}
+.btnLogin-popup:hover{ background: #fff; color: #2e2e2e; }
+
+/* Hamburger (hidden on desktop) */
+.nav-toggle{
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 10px;
+  padding: 6px 10px;
+  color: #fff;
+  font-size: 1.2rem;
 }
 
-.navigation .btnLogin-popup{
-    width: 130px;
-    height: 50px;
-    background: transparent;
-    border: 2px solid white;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: white;
-    font-weight: 500;
-    margin-left: 40px;
-    transition: .5s;
-}
-
-.navigation .btnLogin-popup:hover{
-    background: white;
-    color:hsl(0, 1%, 27%);
-}
-
+/* ===== Login Card ===== */
 .wrapper{
-    position: relative;
-    width: 400px;
-    height: 440px;
-    background: transparent;
-    border: 2px solid;
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 90%;
+  max-width: 420px;
+  background: var(--glass-bg);
+  border: 2px solid rgba(255,255,255,.3);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0,0,0,.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0 48px;
+  scroll-margin-top: calc(var(--header-h) + 16px);
 }
 
-.wrapper .form-box{
-    width: 100%;
-    padding: 40px;
-}
+.wrapper .form-box{ width: 100%; padding: 32px; }
 
-.form-box h2{
-    font-size: 2em;
-    color: white;
-    text-align: center;
-}
+.form-box h2{ font-size: 2rem; text-align: center; }
 
-.input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-bottom: 2px solid white;
-    margin: 30px 0;
+/* Inputs */
+.input-box{
+  position: relative;
+  width: 100%; height: 52px;
+  border-bottom: 2px solid #fff;
+  margin: 28px 0;
 }
-
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: white;
-    font-size: 1em;
-    padding: 0 35px 0 5px; /* space for icons */
+.input-box input{
+  width: 100%; height: 100%;
+  background: transparent; border: none; outline: none;
+  color: #fff; font-size: 1rem;
+  padding: 0 35px 0 5px;
 }
-
-.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: white;
-    font-weight: 500;
-    pointer-events: none;
-    transition: 0.3s ease;
+.input-box label{
+  position: absolute; top: 50%; left: 5px;
+  transform: translateY(-50%);
+  font-size: 1rem; color: #fff; font-weight: 500;
+  pointer-events: none; transition: .25s;
 }
-
-/* Floating effect */
 .input-box input:focus ~ label,
-.input-box input:valid ~ label {
-    top: -5px;
-    font-size: 0.8em;
-    color: #c9a0dc; /* light purple accent */
+.input-box input:valid ~ label{
+  top: -6px; font-size: .8rem; color: var(--purple-accent);
+}
+.input-box .icon{
+  position: absolute; right: 8px;
+  font-size: 1.2rem; color: #fff; line-height: 57px;
 }
 
-.input-box .icon {
-    position: absolute;
-    right: 8px;
-    font-size: 1.2em;
-    color: white;
-    line-height: 57px;
+/* Remember / forgot */
+.remember-forgot{
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: .95rem; margin: -10px 0 16px;
+}
+.remember-forgot a{ color: var(--purple-accent); text-decoration: none; }
+.remember-forgot a:hover{ text-decoration: underline; }
+
+/* Buttons */
+.btn{
+  width: 100%; height: 45px;
+  background: var(--purple-accent);
+  border: none; outline: none; border-radius: 8px;
+  color: #fff; font-weight: 700; cursor: pointer;
+  transition: .25s;
+}
+.btn:hover{ filter: brightness(.95); }
+
+.login-register{
+  font-size: .95rem; text-align: center; margin: 18px 0 8px;
+}
+.login-register a{ color: var(--purple-accent); font-weight: 700; text-decoration: none; }
+.login-register a:hover{ text-decoration: underline; }
+
+/* ===== Contact Section ===== */
+.contact-section{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 80px 16px;
+  background: transparent;
+  backdrop-filter: none;
+  scroll-margin-top: calc(var(--header-h) + 12px);
+}
+.container{
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.container form{
+/* was: display:flex; flex-wrap:wrap; ... */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* two equal columns */
+  column-gap: 40px;  /* left/right spacing */
+  row-gap: 22px;     /* vertical spacing */
+  width: 100%;
+  max-width: 700px;
+  border-radius: 16px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: 0 0 20px rgba(201,160,220,.35);
+  position: relative; /* for any pseudo-elements later */
 }
 
-
-.remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9em;
-    margin: -15px 0 15px; /* tighter above, normal below */
+.container form::after{
+  content:"";
+  position:absolute; inset:0 0 0 0; pointer-events:none;
+  border-radius:16px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0));
 }
 
-.remember-forgot label {
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 5px; /* space between checkbox and text */
+.contact-title{
+  width: 100%;
+  text-align: center;
+  line-height: 2;
+  font-weight: 700;
+}
+.contact-subtitle{
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
-.remember-forgot a {
-    color: #c9a0dc; /* light purple accent */
-    text-decoration: none;
-    transition: 0.3s ease;
+.contact-title,
+.contact-subtitle,
+.contact-prompt,
+.container form textarea,
+.container form #button{
+  grid-column: 1 / -1; /* span both columns */
 }
 
-.remember-forgot a:hover {
-    text-decoration: underline;
+.container form input{
+  width: 100%;              /* was: width: min(320px, 100%); */
+  height: 50px;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  margin: 0;                /* grid handles the spacing */
+  background: none;
+  border-bottom: 2px solid var(--purple-accent);
+  color: #fff;
 }
+.container form input::placeholder{ color: rgba(255,255,255,.8); }
 
-.btn {
+.contact-prompt{
+  margin: 6px 0 0;
+  font-weight: 300;
+}
+.container form textarea{
+  min-height: 110px;
+  width: 100%;
+  resize: vertical;
+  padding: 10px 10px 8px 10px;
+  border-bottom: 2px solid var(--purple-accent);
+  background: none;
+  outline: none;
+  color: #fff;
+  font-size: 18px;
+}
+.container form #button{
     width: 100%;
-    height: 45px;
-    background: #c9a0dc; /* light purple */
-    border: none;
-    outline: none;
-    border-radius: 6px;
+    justify-self: stretch; 
     cursor: pointer;
-    font-size: 1em;
-    color: white;
-    font-weight: 600;
-    transition: 0.3s ease;
+    background: var(--purple-accent);
+}
+.container form #button:hover{ background: #b589d6; color: #000; }
+
+/* Helper: gives anchors some height to scroll to, if you add content later */
+.anchor-spacer{ min-height: 1px; scroll-margin-top: calc(var(--header-h) + 12px); }
+
+/* --------- Responsive --------- */
+@media (max-width: 900px){
+  :root { --header-h: 72px; }
 }
 
-.btn:hover {
-    background: #b589d6; /* slightly darker purple on hover */
+@media (max-width: 768px){
+  .nav-toggle{ display: inline-flex; align-items: center; justify-content: center; }
+  .navigation{
+    position: fixed;
+    top: var(--header-h);
+    right: 16px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(10,0,35,.96);
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 14px;
+    z-index: 1001;
+  }
+  .navigation[data-open="true"]{ display: flex; }
+  .navigation a{ font-size: 1rem; }
+  .btnLogin-popup{ width: 100%; }
+
+  .wrapper{ margin: 8px 16px 32px; }
+  .form-box{ padding: 24px; }
+  .form-box h2{ font-size: 1.6rem; }
 }
 
-.login-register {
-    font-size: 0.9em;
-    color: white;
-    text-align: center;
-    margin: 20px 0 10px;
+@media (max-width: 420px){
+  .logo{ font-size: 1.3rem; }
+  .nav-toggle{ padding: 6px 8px; }
+  .input-box{ height: 50px; }
 }
 
-.login-register a {
-    color: #c9a0dc;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
+@media (max-width: 680px){
+  .container form{
+    grid-template-columns: 1fr;   /* 1 column */
+    row-gap: 18px;
+    column-gap: 0;
+    max-width: 92%;
+  }
 }
 
-.login-register a:hover {
-    text-decoration: underline;
-}

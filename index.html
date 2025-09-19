@@ -6,13 +6,17 @@
   <title>Spirit Path</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- Site Header -->
   <header class="site-header">
-    <h2 class="logo"><a href="/" aria-label="Spirit Path Home">Logo</a></h2>
+    <h2 class="logo">
+      <a href="/" aria-label="Spirit Path Home">
+        <img src="assets/logo.png" alt="Spirit Path logo" class="logo-img" />
+      </a>
+    </h2>
 
-    <!-- Hamburger -->
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
       <ion-icon name="menu" aria-hidden="true"></ion-icon>
       <span class="sr-only">Menu</span>
@@ -20,61 +24,235 @@
 
     <!-- Navigation -->
     <nav id="site-nav" class="navigation" data-open="false">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+      <a href="#/home">Home</a>
+      <a href="#/about">About</a>
+      <a href="#/services">Services</a>
+      <a href="#/bio">Team</a>
+      <a href="#/pmp">PMP</a>
+      <a href="#/presentation">Deck</a>
+      <a href="#/contact">Contact</a>
       <button class="btnLogin-popup">Login</button>
     </nav>
   </header>
 
-  <!-- Hero anchor for 'Home' -->
-  <div id="home" class="anchor-spacer"></div>
-
-  <!-- Login Card -->
-  <div class="wrapper">
-    <div class="form-box">
-      <h2>Login</h2>
-      <form action="#">
-        <!-- Email -->
-        <div class="input-box">
-          <span class="icon"><ion-icon name="mail"></ion-icon></span>
-          <input type="email" required />
-          <label>Email</label>
-        </div>
-
-        <!-- Password -->
-        <div class="input-box">
-          <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-          <input type="password" required />
-          <label>Password</label>
-        </div>
-
-        <!-- Remember + Forgot -->
-        <div class="remember-forgot">
-          <label><input type="checkbox" /> Remember me</label>
-          <a href="#">Forgot Password?</a>
-        </div>
-
-        <!-- Button -->
-        <button type="submit" class="btn">Login</button>
-
-        <!-- Register -->
-        <div class="login-register">
-          <p>Don't have an account?
-            <a href="#" class="register-link">Register</a>
-          </p>
-        </div>
-      </form>
+  <!-- Home -->
+  <section id="home" class="anchor-spacer" data-route="/home" aria-label="Home">
+    <div class="home-hero">
+      <img src="assets/logo.png" alt="Spirit Path logo" class="home-logo">
+      <h1>Welcome to Spirit Path</h1>
+      <p class="home-tagline">Indoor navigation app for the visually impaired</p>
     </div>
-  </div>
+  </section>
 
-  <!-- About/Services demo anchors -->
-  <section id="about" class="anchor-spacer"></section>
-  <section id="services" class="anchor-spacer"></section>
+  <!-- About -->
+  <section id="about" class="anchor-spacer" data-route="/about">
+    <h2>About</h2>
+    <p>
+      Spirit Path is a proof-of-concept application created for our Software Engineering course. 
+      The goal is to explore how <strong>requirements and specifications</strong> guide design decisions 
+      while delivering a working demonstration of an assistive technology system.
+    </p>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section">
+    <p>
+      Our project focuses on helping <strong>visually impaired individuals navigate indoor spaces safely</strong>. 
+      Using a combination of sensor beacons, mobile guidance, and route safety indicators, Spirit Path 
+      aims to reduce obstacles and provide confidence in environments like schools, offices, or shopping centers.
+    </p>
+
+    <p>
+      Since this is an academic proof-of-concept, our emphasis is on: 
+      <ul>
+        <li>Defining clear <em>user requirements</em> and mapping them to system specifications.</li>
+        <li>Exploring architecture trade-offs (accuracy vs. cost, performance vs. usability).</li>
+        <li>Documenting risks such as beacon drift, lighting conditions, and battery limitations.</li>
+        <li>Producing deliverables including an SPMP, architecture overview, and demo presentation.</li>
+      </ul>
+    </p>
+
+    <p>
+      Spirit Path is not yet a commercial product, but it demonstrates how thoughtful requirements 
+      engineering can lay the foundation for life-changing accessibility solutions.
+    </p>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="anchor-spacer" data-route="/services">
+    <div class="section-inner">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-lead">
+        Spirit Path focuses on proof-of-concept solutions for safe indoor navigation for individuals
+        who are blind or visually impaired. Our services combine user research, assistive technology, 
+        and practical design methods to explore how indoor guidance systems can improve independence.
+      </p>
+
+      <ul class="services-list">
+        <li><strong>Indoor Navigation:</strong> Guiding users safely through unfamiliar environments.</li>
+        <li><strong>Obstacle Awareness:</strong> Detecting hazards such as stairs, walls, and furniture.</li>
+        <li><strong>Route Safety KPIs:</strong> Tracking route clarity, lighting, and signal reliability.</li>
+        <li><strong>User-Centered Design:</strong> Engaging with testers to refine requirements and usability.</li>
+        <li><strong>Proof-of-Concept Development:</strong> Prototyping with beacons, cameras, and voice output.</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- Team About Section -->
+  <section id="bio" class="section-card anchor-spacer" data-route="/bio" aria-label="Team Bio">
+    <div class="section-inner">
+      <h2 class="section-title">Our Team</h2>
+      <p class="section-lead">Roles mirror our SPMP: rotating leadership and functional sub-teams focused on requirements & specifications.</p>
+
+      <div class="team-grid" aria-label="Spirit Path engineering team">
+
+        <!-- Rotating Team Leaders -->
+        <article class="team-card">
+          <img src="assets/AJ_Kimbrough.jpg" alt="AJ Kimbrough" class="team-img" loading="eager" fetchpriority="high" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>AJ Kimbrough</h3>
+            <p class="role">Rotating Team Leader (PPP/Interim II)</p>
+            <p class="blurb">Coordinates planning, scheduling, and early requirements elicitation.</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <img src="assets/Deeptanshu_Patel.jpg" alt="Deeptanshu Patel" class="team-img" loading="eager" fetchpriority="high" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Deeptanshu Patel</h3>
+            <p class="role">Rotating Team Leader (Interim I)</p>
+            <p class="blurb">Manages risk identification and communication with stakeholders.</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <img src="assets/Diego_Ibarra.jpeg" alt="Diego Ibarra" class="team-img" loading="eager" fetchpriority="high" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Diego Ibarra</h3>
+            <p class="role">Rotating Team Leader (Final Project I)</p>
+            <p class="blurb">Oversees requirements analysis and coordinates specification tasks.</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <img src="assets/Heather_Stephens.jpg" alt="Heather Stephens" class="team-img" loading="lazy" fetchpriority="low" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Heather Stephens</h3>
+            <p class="role">Rotating Team Leader (Final II)</p>
+            <p class="blurb">Ensures quality of deliverables and guides project documentation.</p>
+          </div>
+        </article>
+
+        <!-- Developer Team A – Core Navigation / TTS / Haptics / Accessibility -->
+        <article class="team-card">
+          <img src="assets/Ayaan_Khan_headshot.jpg" alt="Ayaan Khan" class="team-img" loading="lazy" fetchpriority="low" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Ayaan Khan</h3>
+            <p class="role">Developer — Core Navigation</p>
+            <p class="blurb">Works on safe indoor path guidance and interaction flows.</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <img src="assets/Bukunmi_Adegbonmire_Headshot.JPG" alt="Bukunmi Adegbonmire" class="team-img" loading="lazy" fetchpriority="low" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Bukunmi Adegbonmire</h3>
+            <p class="role">Developer — TTS & Haptics</p>
+            <p class="blurb">Designs auditory and tactile feedback patterns for accessibility.</p>
+          </div>
+        </article>
+
+        <!-- Developer Team B – OCR & Obstacle Detection -->
+        <article class="team-card">
+          <img src="assets/Cameron_Gai_Headshot.jpg" alt="Cameron Gai" class="team-img" loading="lazy" fetchpriority="low" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Cameron Gai</h3>
+            <p class="role">Developer — OCR</p>
+            <p class="blurb">Explores OCR for signs and room labels to supplement routing.</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <img src="assets/Ethan_Urhoghide_Pro_Headshot.JPG" alt="Ethan Urhoghide" class="team-img" loading="lazy" fetchpriority="low" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Ethan Urhoghide</h3>
+            <p class="role">Developer — Obstacle Detection</p>
+            <p class="blurb">Researches approaches to identify obstacles and hazards indoors.</p>
+          </div>
+        </article>
+
+        <!-- Platform Team -->
+        <article class="team-card">
+          <img src="assets/Hemanta_Regmi_Headshot.jpg" alt="Hemanta Regmi" class="team-img" loading="lazy" fetchpriority="low" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Hemanta Regmi</h3>
+            <p class="role">Platform Engineer — iOS/Android</p>
+            <p class="blurb">Works on app integration across platforms and API design.</p>
+          </div>
+        </article>
+
+        <!-- QA/Tester Team -->
+        <article class="team-card">
+          <img src="assets/Jorge_Quintero_Headshot.jpg" alt="Jorge Quintero" class="team-img" loading="lazy" fetchpriority="low" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Jorge Quintero</h3>
+            <p class="role">QA / Tester</p>
+            <p class="blurb">Validates prototypes and checks conformance to requirements.</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <img src="assets/Roger_Belman_Headshot.jpg" alt="Roger Belman" class="team-img" loading="lazy" fetchpriority="low" decoding="async" width="400" height="400" />
+          <div class="team-meta">
+            <h3>Roger Belman</h3>
+            <p class="role">QA / Tester</p>
+            <p class="blurb">Helps verify specifications and core functionality in tests.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PMP -->
+  <!-- PMP -->
+  <section id="pmp" class="anchor-spacer" data-route="/pmp" aria-label="Project Management Plan">
+    <h2 class="section-title" style="text-align:center; margin-bottom:12px;">Project Management Plan</h2>
+    <p class="section-lead" style="text-align:center; margin-bottom:20px;">
+      Our SPMP for the indoor blind navigation proof-of-concept.
+    </p>
+
+    <!-- Full-width embedded PDF -->
+    <embed src="docs/pmp.pdf#zoom=page-width" type="application/pdf" class="pmp-embed" />
+
+    <div class="pmp-links" style="text-align:center; margin-top:16px;">
+      <a class="btn-sm" href="docs/pmp.pdf" download>Download PDF</a>
+      <a class="btn-sm btn-ghost" href="docs/pmp.pdf" target="_blank" rel="noreferrer noopener">Open in new tab</a>
+    </div>
+  </section>
+
+  <!-- Presentation -->
+  <section id="presentation" class="section-card anchor-spacer" data-route="/presentation" aria-label="Group Presentation">
+    <div class="section-inner">
+      <h2 class="section-title">Group Presentation</h2>
+      <p class="section-lead">
+        The deck summarizes problem context, accessibility goals, architecture (client, routing service, mapping & vision),
+        demo flows (start navigation, deviation recovery), and results from pilot tests with blind/low-vision users.
+      </p>
+
+      <div class="asset-grid">
+        <article class="asset-card">
+          <div class="asset-icon"><ion-icon name="easel-outline" aria-hidden="true"></ion-icon></div>
+          <h3>Presentation Deck</h3>
+          <p class="asset-desc">Download or view our group presentation.</p>
+          <div class="asset-actions">
+            <a class="btn" href="docs/presentation.pptx" download>Download PPTX</a>
+            <a class="btn btn-ghost" href="docs/presentation.pdf" target="_blank" rel="noreferrer noopener">View PDF</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section" data-route="/contact" aria-label="Contact">
     <div class="container">
       <form>
         <h1 class="contact-title">Spirit Path</h1>
@@ -93,9 +271,42 @@
     </div>
   </section>
 
+  <!-- 404 -->
+  <section id="not-found" class="section-card anchor-spacer" data-route="/404" aria-label="Not Found">
+    <div class="section-inner">
+      <h2 class="section-title">Page Not Found</h2>
+      <p class="section-lead">We couldn’t find that page. <a href="#/home">Go Home</a>.</p>
+    </div>
+  </section>
+
+  <!-- Scripts -->
   <script src="index.js"></script>
+  <script src="app.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    (function () {
+      const imgs = Array.from(document.querySelectorAll('#bio .team-img'));
+      if (!('IntersectionObserver' in window) || imgs.length === 0) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target;
+          if (entry.isIntersecting) {
+            el.fetchPriority = 'high';
+            el.decoding = 'async';
+
+            const i = imgs.indexOf(el);
+            imgs.slice(i + 1, i + 3).forEach(nxt => (nxt.fetchPriority = 'high'));
+
+            io.unobserve(el);
+          }
+        });
+      }, { rootMargin: '400px 0px' }); 
+
+      imgs.forEach(img => io.observe(img));
+    })();
+  </script>
 </body>
 </html>
-
